@@ -4,11 +4,11 @@ import HeroList from "../../components/HeroList/HeroList";
 
 const MarvelPage = () => {
 	return (
-		<div className={`${styles.MarvelPage} row row-cols-3`} data-testid="MarvelPage">
+		<div className={`${styles.MarvelPage} row mt-4`} data-testid="MarvelPage">
 			<div className="col-12">
 				<h1>Marvel Comics</h1>
+				<HeroList publisher="Marvel Comics"/>
 			</div>
-			<HeroList publisher="Marvel Comics"/>
 		</div>
 	)
 };

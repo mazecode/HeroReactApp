@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import styles from './HeroePage.module.scss';
 import {Redirect, useParams} from "react-router-dom";
 import {getHeroById} from "../../selectors/getHeroById";
 
 const HeroePage = ({history}) => {
 	const {heroeId} = useParams();
-	const heroe = getHeroById(heroeId);
+	const heroe = useMemo(() => getHeroById(heroeId), [heroeId]);
 
 	if (!heroe) {
 		return <Redirect to="/"/>;
@@ -28,16 +28,21 @@ const HeroePage = ({history}) => {
 	}
 
 	return (
-		<div className={`${styles.HeroePage} row`} data-testid="HeroePage">
+		<div className={`${styles.HeroePage} row mt-4`} data-testid="HeroePage">
 			<div className="col-12">
-				<img className="float-end" src={`/images/heroes/${heroeId}.jpg`} alt={superhero}/>
-
-				<h1 className="display-1 mb-0 pb-0">{superhero}</h1>
-				<strong className="display-4"><small>{characters}</small></strong>
-				<p>{first_appearance}</p>
-				<p>{alter_ego}</p>
-				<p>{publisher}</p>
-				<button onClick={handleReturn}>Back...</button>
+				<img className="float-end animate__animated animate__fadeInRight"
+					 src={`/images/heroes/${heroeId}.jpg`}
+					 alt={superhero}/>
+				<div className="mb-4">
+					<h1 className="display-1 mb-0 pb-0 animate__animated animate__bounce">{superhero}</h1>
+					<strong className="display-4"><small>{characters}</small></strong>
+					<p>{first_appearance}</p>
+					<p>{alter_ego}</p>
+					<p>{publisher}</p>
+					<button className="btn btn-sm btn-dark w-100 mt-4"
+							onClick={handleReturn}>Back...
+					</button>
+				</div>
 			</div>
 		</div>
 	);

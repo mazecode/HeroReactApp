@@ -11,7 +11,8 @@ const HeroCard = ({
 				  }) => {
 
 	return (
-		<div className={`${styles.HeroCard} card text-white bg-primary mb-3 animate `} data-testid="HeroCard"
+		<div className={`${styles.HeroCard} card text-white bg-primary mb-3 `}
+			 data-testid="HeroCard"
 			 style={{width: '18rem'}}>
 			<img className="card-img" src={`/images/heroes/${id}.jpg`} alt={superhero}/>
 			<div className="card-img-overlay">
